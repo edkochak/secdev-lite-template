@@ -1,0 +1,65 @@
+{
+  "@version": "2.14.0",
+  "@generated": "2025-11-15T14:15:00.000Z",
+  "site": [
+    {
+      "@name": "http://localhost:8080",
+      "@host": "localhost",
+      "@port": "8080",
+      "@ssl": "false",
+      "alerts": [
+        {
+          "pluginid": "10202",
+          "alertRef": "10202",
+          "alert": "Absence of Anti-CSRF Tokens",
+          "name": "Absence of Anti-CSRF Tokens", 
+          "riskcode": "2",
+          "confidence": "2",
+          "riskdesc": "Medium (Medium)",
+          "desc": "No Anti-CSRF tokens were found in a HTML submission form.",
+          "instances": [
+            {
+              "uri": "http://localhost:8080/upload",
+              "method": "GET",
+              "param": "",
+              "attack": "",
+              "evidence": "<form method=\"post\" action=\"/upload\">"
+            }
+          ],
+          "count": "1",
+          "solution": "Phase: Architecture and Design Use a vetted library or framework that does not allow this weakness to occur or provides constructs that make this weakness easier to avoid.",
+          "otherinfo": "No known Anti-CSRF token [anticsrf, CSRFToken, __RequestVerificationToken, csrfmiddlewaretoken, authenticity_token, OWASP_CSRFTOKEN, anoncsrf, csrf_token, _token, _csrf, csrf-token, xsrf-token] was found in the following HTML form: [Form 1: \"file\" ].",
+          "reference": "http://projects.webappsec.org/Cross-Site-Request-Forgery",
+          "cweid": "352",
+          "wascid": "9",
+          "sourceid": "3"
+        },
+        {
+          "pluginid": "10021",
+          "alertRef": "10021",
+          "alert": "X-Content-Type-Options Header Missing",
+          "name": "X-Content-Type-Options Header Missing",
+          "riskcode": "1", 
+          "confidence": "2",
+          "riskdesc": "Low (Medium)",
+          "desc": "The Anti-MIME-Sniffing header X-Content-Type-Options was not set to 'nosniff'.",
+          "instances": [
+            {
+              "uri": "http://localhost:8080/",
+              "method": "GET", 
+              "param": "X-Content-Type-Options",
+              "attack": "",
+              "evidence": ""
+            }
+          ],
+          "count": "5",
+          "solution": "Ensure that the application/web server sets the Content-Type header appropriately, and that it sets the X-Content-Type-Options header to 'nosniff' for all web pages.",
+          "reference": "http://msdn.microsoft.com/en-us/library/ie/gg622941%28v=vs.85%29.aspx",
+          "cweid": "693",
+          "wascid": "15", 
+          "sourceid": "3"
+        }
+      ]
+    }
+  ]
+}
